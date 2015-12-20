@@ -1,12 +1,10 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
+output: html_document
 ---
 
-
-## Loading and preprocessing the data
+Loading and preprocessing the data
+------------------------------------
 
 1. Load, unzip and read data
 ```{r}
@@ -16,8 +14,8 @@ output:
 data<-read.csv("activity.csv")
 ```
 
-## What is mean total number of steps taken per day?
-
+What is mean total number of steps taken per day?
+-------------------------------------------------
 1. Filter data from "NA". Then calculate the number of steps taken per day
 ```{r}
 data_without_na<-na.omit(data)
@@ -36,8 +34,8 @@ mean(res_steps_sum$V1)
 median(res_steps_sum$V1)
 ```
 
-
-## What is the average daily activity pattern?
+What is the average daily activity pattern?
+-----------
 
 1. Calculate the average number of of steps
 ```{r}
@@ -54,9 +52,8 @@ plot(res_interval_mean$interval, res_interval_mean$V1, type="l", xlab="interval"
 res_interval_mean$interval[which.max(res_interval_mean$V1)]
 ```
 
-
-## Imputing missing values
-
+Imputing missing values
+---------
 1. Calculate and report the total number of missing values in the dataset
 ```{r}
 count<-nrow(data)-nrow(data_without_na)
@@ -86,7 +83,8 @@ median(res_steps_sum_all$V1)
 ```
 
 
-## Are there differences in activity patterns between weekdays and weekends?
+Are there differences in activity patterns between weekdays and weekends?
+----------
 1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day. Then combine data of weekend and weekday.
 ```{r}
 Sys.setlocale("LC_TIME", "English")
